@@ -1,8 +1,26 @@
 package main
 
-import "fmt"
+var userInputMainMenu int
+var userInputReport int
 
 func main() {
-	//insert code here
-	fmt.Println("Hello assignment")
+
+	showMainMenu()
+
+	if userInputMainMenu == 1 {
+		shoppingListDisplay()
+		main()
+	}
+	if userInputMainMenu == 2 {
+		generateShoppingList()
+		if userInputReport == 1 {
+			calculateByCategory()
+			main()
+		} else if userInputReport == 2 {
+			displayByCategory()
+			main()
+		} else {
+			main()
+		}
+	}
 }
