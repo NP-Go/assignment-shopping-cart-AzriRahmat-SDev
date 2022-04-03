@@ -52,3 +52,15 @@ func modifyItemMenu() {
 	fmt.Scanln(&userInputModifyCost)
 	modifyItemsHandler()
 }
+
+func deleteItemMenu() {
+	fmt.Println("Delete Item.")
+	fmt.Println("Enter item name to delete: ")
+	fmt.Scanln(&userInputDeleteItem)
+	deleteItemHandler()
+}
+
+func printCurrentDataMenu() {
+	fmt.Println("Print Current Data.")
+	printDataHandler()
+}

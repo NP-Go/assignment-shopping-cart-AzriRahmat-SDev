@@ -8,8 +8,13 @@ type itemInfo struct {
 	unitCost float64
 }
 
+// type empty struct {
+// }
+
 var categories = []string{"Household", "Food", "Drinks"}
 var shoppingList = make(map[string]itemInfo)
+
+// var shoppingListEmpty = make(map[string]empty)
 
 func init() {
 	shoppingList["Fork"] = itemInfo{category: 0, quantity: 5, unitCost: 3}
@@ -82,13 +87,11 @@ func displayModifiedItem() {
 
 func modifyItemsHandler() {
 	// shoppingList["Fork"] = itemInfo{category: 0, quantity: 5, unitCost: 3}
-
 	// User enters "Fork"
 
 	var tempInfoForItem = shoppingList[userInputModifyItemOriginal]
 	// tempInfoForItem = shoppingList["Fork"]
 	// tempInfoForItem = itemInfo{category: 0, quantity: 5, unitCost: 3}
-	//
 
 	// tempInfoForItem {
 	// 	  category: 0,
@@ -162,7 +165,6 @@ func modifyItemsHandler() {
 		if exist {
 			fmt.Println("The item you keyed already exist, are you sure you want to overide? Yes or No")
 			fmt.Scanln(&decision)
-
 		}
 		if decision == "Yes" {
 			shoppingList[userInputModifyItemNew] = tempInfoForItem
@@ -171,5 +173,25 @@ func modifyItemsHandler() {
 			fmt.Println("No change made RTB")
 		}
 	}
+}
 
+func deleteItemHandler() {
+	for key := range shoppingList {
+		if userInputDeleteItem == key {
+			delete(shoppingList, key)
+		}
+	}
+	_, exist := shoppingList[userInputDeleteItem]
+	if !exist {
+		fmt.Println("Item not found. nothing to delete!")
+	}
+}
+
+func printDataHandler() {
+	for key, itemInfo := range shoppingList {
+		fmt.Println(key, itemInfo)
+	}
+	if len(shoppingList) <= 0 {
+		fmt.Println("No data found")
+	}
 }

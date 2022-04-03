@@ -2,16 +2,22 @@ package main
 
 var userInputMainMenu int
 var userInputReport int
+
+//Variable for adding
 var userInputAddCategory string
 var userInputAddItem string
 var userInputAddCost float64
 var userInputAddUnits int
 
+//Variable for Modify
 var userInputModifyItemOriginal string
 var userInputModifyItemNew string
 var userInputModifyCategory string
 var userInputModifyQty int
 var userInputModifyCost float64
+
+//Variables for Delete and
+var userInputDeleteItem string
 
 func main() {
 
@@ -40,5 +46,14 @@ func main() {
 	if userInputMainMenu == 4 {
 		modifyItemMenu()
 		main()
+	}
+
+	if userInputMainMenu == 5 {
+		deleteItemMenu()
+		main()
+	}
+
+	if userInputMainMenu == 6 {
+		printCurrentDataMenu()
 	}
 }
