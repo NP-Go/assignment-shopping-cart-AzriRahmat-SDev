@@ -16,8 +16,11 @@ var userInputModifyCategory string
 var userInputModifyQty int
 var userInputModifyCost float64
 
-//Variables for Delete and
+//Variables for Delete
 var userInputDeleteItem string
+
+//Variables for Add new Category
+var userInputAddNewCategory string
 
 func main() {
 
@@ -55,5 +58,10 @@ func main() {
 
 	if userInputMainMenu == 6 {
 		printCurrentDataMenu()
+	}
+
+	if userInputMainMenu == 7 {
+		printAddNewCategory()
+		main()
 	}
 }

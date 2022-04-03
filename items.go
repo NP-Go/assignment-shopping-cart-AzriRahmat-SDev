@@ -195,3 +195,31 @@ func printDataHandler() {
 		fmt.Println("No data found")
 	}
 }
+
+func AddNewCategoryHandler() {
+	// categories = {"Household", "Food", "Drinks"}
+
+	//Check through categories to see if it exists already
+	//Reject if exists
+
+	//If not exists, add to categories
+	var exist bool = false
+	var currentIndex int
+	for i := 0; i < len(categories); i++ {
+		// fmt.Println(userInputAddNewCategory, "==", categories[i])
+		// fmt.Println(userInputAddNewCategory == categories[i])
+		if userInputAddNewCategory == categories[i] {
+			exist = true
+			currentIndex = i
+		}
+	}
+
+	if exist {
+		fmt.Println("Category", userInputAddNewCategory, "already exist at index", currentIndex)
+	} else {
+		categories = append(categories, userInputAddNewCategory)
+		fmt.Println("New Category:", userInputAddNewCategory, "added at index", len(categories)-1)
+		fmt.Println(categories)
+	}
+
+}

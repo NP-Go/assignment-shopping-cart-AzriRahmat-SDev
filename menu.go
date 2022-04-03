@@ -64,3 +64,10 @@ func printCurrentDataMenu() {
 	fmt.Println("Print Current Data.")
 	printDataHandler()
 }
+
+func printAddNewCategory() {
+	fmt.Println("Add New Category Name.")
+	fmt.Println("What is the New Category Name to add?")
+	fmt.Scanln(&userInputAddNewCategory)
+	AddNewCategoryHandler()
+}
