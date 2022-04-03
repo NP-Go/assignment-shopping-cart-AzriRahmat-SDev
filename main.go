@@ -7,6 +7,12 @@ var userInputAddItem string
 var userInputAddCost float64
 var userInputAddUnits int
 
+var userInputModifyItemOriginal string
+var userInputModifyItemNew string
+var userInputModifyCategory string
+var userInputModifyQty int
+var userInputModifyCost float64
+
 func main() {
 
 	showMainMenu()
@@ -27,9 +33,11 @@ func main() {
 			main()
 		}
 	}
-
 	if userInputMainMenu == 3 {
 		addItemsMenu()
 		main()
+	}
+	if userInputMainMenu == 4 {
+		modifyItemMenu()
 	}
 }

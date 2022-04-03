@@ -36,3 +36,19 @@ func addItemsMenu() {
 	fmt.Scanln(&userInputAddCost)
 	addNewItem()
 }
+
+func modifyItemMenu() {
+	fmt.Println("Modify Item.")
+	fmt.Println("Which Item would you wish to modify")
+	fmt.Scanln(&userInputModifyItemOriginal)
+	displayModifiedItem()
+	fmt.Println("Enter new name. Enter for no change")
+	fmt.Scanln(&userInputModifyItemNew)
+	fmt.Println("Enter new Category. Enter for no change")
+	fmt.Scanln(&userInputModifyCategory)
+	fmt.Println("Enter new Quantity. Enter for no change")
+	fmt.Scanln(&userInputModifyQty)
+	fmt.Println("Enter new Unit Cost. Enter for no change")
+	fmt.Scanln(&userInputModifyCost)
+	modifyItemsHandler()
+}

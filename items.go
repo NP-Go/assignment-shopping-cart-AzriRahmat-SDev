@@ -65,3 +65,45 @@ func addNewItem() {
 		}
 	}
 }
+
+func displayModifiedItem() {
+	var itemExist bool = false
+	for key, itemInfo := range shoppingList {
+		if userInputModifyItemOriginal == key {
+			fmt.Println("Current item name is", key, "- Category is", categories[itemInfo.category], "- Quantity is", itemInfo.quantity, "- Unit Cost", itemInfo.unitCost)
+			itemExist = true
+		}
+	}
+	if !itemExist {
+		fmt.Println("Item enter does not exist")
+		modifyItemMenu()
+	}
+}
+
+func modifyItemsHandler() {
+	var tempInfo = shoppingList[userInputModifyItemOriginal]
+
+	if userInputModifyCategory != "" {
+		tempInfo = itemInfo{category: userInputModifyCategory}
+	} else {
+		fmt.Println("No changes to category made.")
+	}
+	if userInputModifyQty != "" {
+
+	} else {
+		fmt.Println("No changes to quantity made.")
+	}
+
+	if userInputModifyCost != "" {
+
+	} else {
+		fmt.Println("No changes to cost made.")
+	}
+
+	if userInputModifyItemNew != "" {
+
+	} else {
+		fmt.Println("No changes to name made.")
+	}
+
+}
