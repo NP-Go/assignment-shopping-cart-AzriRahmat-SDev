@@ -13,7 +13,7 @@ var shoppingList = make(map[string]itemInfo)
 
 func init() {
 	shoppingList["Fork"] = itemInfo{category: 0, quantity: 5, unitCost: 3}
-	shoppingList["Plates"] = itemInfo{category: 0, quantity: 4, unitCost: 3}
+	shoppingList["Plate"] = itemInfo{category: 0, quantity: 4, unitCost: 3}
 	shoppingList["Cups"] = itemInfo{category: 0, quantity: 4, unitCost: 3}
 	shoppingList["Bread"] = itemInfo{category: 1, quantity: 2, unitCost: 2}
 	shoppingList["Cake"] = itemInfo{category: 1, quantity: 3, unitCost: 1}
@@ -81,29 +81,95 @@ func displayModifiedItem() {
 }
 
 func modifyItemsHandler() {
-	var tempInfo = shoppingList[userInputModifyItemOriginal]
+	// shoppingList["Fork"] = itemInfo{category: 0, quantity: 5, unitCost: 3}
+
+	// User enters "Fork"
+
+	var tempInfoForItem = shoppingList[userInputModifyItemOriginal]
+	// tempInfoForItem = shoppingList["Fork"]
+	// tempInfoForItem = itemInfo{category: 0, quantity: 5, unitCost: 3}
+	//
+
+	// tempInfoForItem {
+	// 	  category: 0,
+	//    quantity: 5,
+	//	  cost: 3
+	// }
+
+	var setUserInputModifyCategory int
+
+	for i := 0; i < len(categories); i++ {
+		if categories[i] == userInputModifyCategory {
+			setUserInputModifyCategory = i
+		}
+	}
+
+	// User input category "Food"
+	// userInputModifyCategory = 1
 
 	if userInputModifyCategory != "" {
-		tempInfo = itemInfo{category: userInputModifyCategory}
+		tempInfoForItem.category = setUserInputModifyCategory
+
+		// tempInfoForItem {
+		// 	  category: 1,
+		//    quantity: 5,
+		//	  cost: 3
+		// }
+
 	} else {
 		fmt.Println("No changes to category made.")
 	}
-	if userInputModifyQty != "" {
 
+	if userInputModifyQty != 0 {
+		tempInfoForItem.quantity = userInputModifyQty
 	} else {
 		fmt.Println("No changes to quantity made.")
 	}
 
-	if userInputModifyCost != "" {
-
+	if userInputModifyCost != 0 {
+		tempInfoForItem.unitCost = userInputModifyCost
 	} else {
 		fmt.Println("No changes to cost made.")
 	}
 
-	if userInputModifyItemNew != "" {
+	// tempInfoForItem {
+	// 	  category: 1,
+	//    quantity: 45,
+	//	  cost:100
+	// }
 
-	} else {
-		fmt.Println("No changes to name made.")
+	//Scenario 1: User input blank
+	//  - Update "Fork" with new tempInfoForItem
+	if userInputModifyItemNew == "" {
+
+		// i, exist := shoppingList["Fork"]
+		// i => itemInfo{category:0, quantity:1, cost:10}
+		// exist => true
+
+		// i, exist := shoppingList["mouse"]
+		// i => 0
+		// exist => false
+		shoppingList[userInputModifyItemOriginal] = tempInfoForItem
+		fmt.Println("No changes to cost made.")
+	}
+	//Scenario 2: User input new item name
+	//  - Add "Plate" with new tempInfoForItem
+	//  - Delete "Fork"
+	if userInputModifyItemNew != "" {
+		decision := "Yes"
+		_, exist := shoppingList[userInputModifyItemNew]
+		fmt.Println("testing", exist)
+		if exist {
+			fmt.Println("The item you keyed already exist, are you sure you want to overide? Yes or No")
+			fmt.Scanln(&decision)
+
+		}
+		if decision == "Yes" {
+			shoppingList[userInputModifyItemNew] = tempInfoForItem
+			delete(shoppingList, userInputModifyItemOriginal)
+		} else {
+			fmt.Println("No change made RTB")
+		}
 	}
 
 }

@@ -39,5 +39,6 @@ func main() {
 	}
 	if userInputMainMenu == 4 {
 		modifyItemMenu()
+		main()
 	}
 }
