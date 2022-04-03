@@ -2,6 +2,10 @@ package main
 
 var userInputMainMenu int
 var userInputReport int
+var userInputAddCategory string
+var userInputAddItem string
+var userInputAddCost float64
+var userInputAddUnits int
 
 func main() {
 
@@ -22,5 +26,10 @@ func main() {
 		} else {
 			main()
 		}
+	}
+
+	if userInputMainMenu == 3 {
+		addItemsMenu()
+		main()
 	}
 }

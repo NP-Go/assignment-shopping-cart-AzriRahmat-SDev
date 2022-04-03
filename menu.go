@@ -24,3 +24,15 @@ func generateShoppingList() {
 	fmt.Println("Choose your report: ")
 	fmt.Scanln(&userInputReport)
 }
+
+func addItemsMenu() {
+	fmt.Println("What is your item?")
+	fmt.Scanln(&userInputAddItem)
+	fmt.Println("What category does it belong to?")
+	fmt.Scanln(&userInputAddCategory)
+	fmt.Println("How many unit are there?")
+	fmt.Scanln(&userInputAddUnits)
+	fmt.Println("How much does it cost per unit?")
+	fmt.Scanln(&userInputAddCost)
+	addNewItem()
+}

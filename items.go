@@ -56,5 +56,12 @@ func displayByCategory() {
 			}
 		}
 	}
+}
 
+func addNewItem() {
+	for i := 0; i < len(categories); i++ {
+		if categories[i] == userInputAddCategory {
+			shoppingList[userInputAddItem] = itemInfo{category: i, quantity: userInputAddUnits, unitCost: userInputAddCost}
+		}
+	}
 }
